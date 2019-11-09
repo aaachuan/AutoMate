@@ -1,6 +1,6 @@
-### Pattern Matching with Regular Expressions
+# Pattern Matching with Regular Expressions
 
-#### simple example
+## simple example
 
 字符串查找电话号码，如415-555-4242这种形式。
 
@@ -20,7 +20,7 @@ print('Phone number found: ' + mo.group())
 
 ```
 
-#### more pattern matching
+## more pattern matching
 
 - 括号()分组与group():+1:
 ```
