@@ -74,4 +74,47 @@ IndexError: no such group
 'Batwoman'
 >>>
 ```
+
 ?可以理解为是匹配这个问号之前的分组0次或者1次
+
+- 星号*匹配0次或多次
+```
+>>> batRegex = re.compile(r'Bat(wo)*man')
+>>> mo1 = batRegex.search('The Adventures of Batman')
+>>> mo1.group()
+'Batman'
+>>> mo1 = batRegex.search('The Adventures of Batwoman')
+>>> mo1.group()
+'Batwoman'
+>>> mo1 = batRegex.search('The Adventures of Batwowowoman')
+>>> mo1.group()
+'Batwowowoman'
+```
+- 加号+匹配一次或多次
+```
+>>> batRegex = re.compile(r'Bat(wo)+man')
+>>> mo1 = batRegex.search('The Adventures of Batwoman')
+>>> mo1.group()
+'Batwoman'
+>>> mo2 = batRegex.search('The Adventures of Batwowowoman')
+>>> mo2.group()
+'Batwowowoman'
+>>> mo3 = batRegex.search('The Adventures of Batman')
+>>> mo3 == None
+True
+>>>
+```
+- 花括号{}匹配特定次数
+```
+>>> haRegex = re.compile(r'(Ha){3}')
+>>> mo1 = haRegex.search('HaHaHa')
+>>> mo1.group()
+'HaHaHa'
+>>> mo2 = haRegex.search('Ha')
+>>> mo2.group()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'NoneType' object has no attribute 'group'
+>>> mo2 == None
+True
+```
