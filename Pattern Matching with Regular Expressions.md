@@ -118,3 +118,33 @@ AttributeError: 'NoneType' object has no attribute 'group'
 >>> mo2 == None
 True
 ```
+
+## greedy & nongreedy matching
+
+```
+>>> greedyBatRegex = re.compile(r'(Bat){3,5}')
+>>> mo1 = greedyBatRegex.search('BatBatBatBatBar')
+>>> mo1.group()
+'BatBatBatBat'
+>>>
+>>> nongreedyBatRegex = re.compile(r'(Bat){3,5}?')
+>>> mo2 = nongreedyBatRegex.search('BatBatBatBatBat')
+>>> mo2.group()
+'BatBatBat'
+```
+
+## findall()
+
+```
+>>> phoneNumRegex = re.compile(r'\d\d\d-\d\d\d-\d\d\d\d')
+>>> mo = phoneNumRegex.search('Cell: 415-555-9999 Work:212-555-0000')
+>>> mo.group()
+'415-555-9999'
+>>> phoneNumRegex.findall('Cell: 415-555-9999 Work:212-555-0000')
+['415-555-9999', '212-555-0000']
+>>> phoneNumRegex = re.compile(r'(\d\d\d)-(\d\d\d)-(\d\d\d\d)')
+>>> phoneNumRegex.findall('Cell: 415-555-9999 Work:212-555-0000')
+[('415', '555', '9999'), ('212', '555', '0000')]
+>>>
+```
+
